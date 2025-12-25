@@ -1,0 +1,20 @@
+|LFSR4bit
+clk => lfsr[0]~reg0.CLK
+clk => lfsr[1]~reg0.CLK
+clk => lfsr[2]~reg0.CLK
+clk => lfsr[3]~reg0.CLK
+rst => lfsr[0]~reg0.ACLR
+rst => lfsr[1]~reg0.PRESET
+rst => lfsr[2]~reg0.PRESET
+rst => lfsr[3]~reg0.ACLR
+lfsr[0] << lfsr[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+lfsr[1] << lfsr[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+lfsr[2] << lfsr[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+lfsr[3] << lfsr[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+random_num[0] << lfsr[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+random_num[1] << lfsr[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+random_num[2] << lfsr[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+random_num[3] << lfsr[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+output_bit << lfsr[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+

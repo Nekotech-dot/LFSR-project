@@ -1,0 +1,112 @@
+# Reading D:/essential_app/quartus/modelsim_ase/tcl/vsim/pref.tcl 
+# do LFSR4bit_run_msim_rtl_verilog.do 
+# if {[file exists rtl_work]} {
+# 	vdel -lib rtl_work -all
+# }
+# vlib rtl_work
+# vmap work rtl_work
+# Copying D:\essential_app\quartus\modelsim_ase\win32aloem/../modelsim.ini to modelsim.ini
+# Modifying modelsim.ini
+# ** Warning: Copied D:\essential_app\quartus\modelsim_ase\win32aloem/../modelsim.ini to modelsim.ini.
+#          Updated modelsim.ini.
+# 
+# vlog -vlog01compat -work work +incdir+D:/Projects/science_project/prng_based_lfsr/LFSR4bit_on_paper/LFSR4bit_on_paper_verilog {D:/Projects/science_project/prng_based_lfsr/LFSR4bit_on_paper/LFSR4bit_on_paper_verilog/LFSR4bit.v}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module LFSR4bit
+# 
+# Top level modules:
+# 	LFSR4bit
+# 
+vlog -reportprogress 300 -work work D:/Projects/science_project/prng_based_lfsr/LFSR4bit_on_paper/LFSR4bit_on_paper_verilog/tb_LFSR4bit.v
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module tb_LFSR4bit
+# 
+# Top level modules:
+# 	tb_LFSR4bit
+vsim work.tb_LFSR4bit
+# vsim work.tb_LFSR4bit 
+# Loading work.tb_LFSR4bit
+# ** Error: (vsim-3033) D:/Projects/science_project/prng_based_lfsr/LFSR4bit_on_paper/LFSR4bit_on_paper_verilog/tb_LFSR4bit.v(18): Instantiation of 'lfsr_prng' failed. The design unit was not found.
+# 
+#         Region: /tb_LFSR4bit
+#         Searched libraries:
+#             D:/Projects/science_project/prng_based_lfsr/LFSR4bit_on_paper/LFSR4bit_on_paper_verilog/simulation/modelsim/rtl_work
+# Error loading design
+vlog -work work -O0 D:/Projects/science_project/prng_based_lfsr/LFSR4bit_on_paper/LFSR4bit_on_paper_verilog/tb_LFSR4bit.v
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module tb_LFSR4bit
+# 
+# Top level modules:
+# 	tb_LFSR4bit
+vsim work.tb_LFSR4bit
+# vsim work.tb_LFSR4bit 
+# Loading work.tb_LFSR4bit
+# Loading work.LFSR4bit
+add wave -position insertpoint  \
+sim:/tb_LFSR4bit/rst \
+sim:/tb_LFSR4bit/random_num \
+sim:/tb_LFSR4bit/output_bit \
+sim:/tb_LFSR4bit/lfsr \
+sim:/tb_LFSR4bit/clk
+run -all
+# Time=5000 | LFSR=xxxx | random_num=xxxx | output_bit=x
+# ** Note: $finish    : D:/Projects/science_project/prng_based_lfsr/LFSR4bit_on_paper/LFSR4bit_on_paper_verilog/tb_LFSR4bit.v(35)
+#    Time: 5 ns  Iteration: 1  Instance: /tb_LFSR4bit
+# 1
+# Break in Module tb_LFSR4bit at D:/Projects/science_project/prng_based_lfsr/LFSR4bit_on_paper/LFSR4bit_on_paper_verilog/tb_LFSR4bit.v line 35
+vlog -work work -O0 D:/Projects/science_project/prng_based_lfsr/LFSR4bit_on_paper/LFSR4bit_on_paper_verilog/tb_LFSR4bit.v
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module tb_LFSR4bit
+# 
+# Top level modules:
+# 	tb_LFSR4bit
+vsim work.tb_LFSR4bit
+# vsim work.tb_LFSR4bit 
+# Loading work.tb_LFSR4bit
+# Loading work.LFSR4bit
+add wave -position insertpoint  \
+sim:/tb_LFSR4bit/rst \
+sim:/tb_LFSR4bit/random_num \
+sim:/tb_LFSR4bit/output_bit \
+sim:/tb_LFSR4bit/lfsr \
+sim:/tb_LFSR4bit/clk
+run -all
+# Time=15000 | LFSR=0110 | random_num=0110 | output_bit=0
+# Time=25000 | LFSR=0011 | random_num=0011 | output_bit=1
+# Time=35000 | LFSR=1001 | random_num=1001 | output_bit=1
+# Time=45000 | LFSR=0100 | random_num=0100 | output_bit=0
+# Time=55000 | LFSR=0010 | random_num=0010 | output_bit=0
+# Time=65000 | LFSR=0001 | random_num=0001 | output_bit=1
+# Time=75000 | LFSR=1000 | random_num=1000 | output_bit=0
+# Time=85000 | LFSR=1100 | random_num=1100 | output_bit=0
+# Time=95000 | LFSR=1110 | random_num=1110 | output_bit=0
+# Time=105000 | LFSR=1111 | random_num=1111 | output_bit=1
+# Time=115000 | LFSR=0111 | random_num=0111 | output_bit=1
+# Time=125000 | LFSR=1011 | random_num=1011 | output_bit=1
+# Time=135000 | LFSR=0101 | random_num=0101 | output_bit=1
+# Time=145000 | LFSR=1010 | random_num=1010 | output_bit=0
+# Time=155000 | LFSR=1101 | random_num=1101 | output_bit=1
+# Time=165000 | LFSR=0110 | random_num=0110 | output_bit=0
+# Time=175000 | LFSR=0011 | random_num=0011 | output_bit=1
+# Time=185000 | LFSR=1001 | random_num=1001 | output_bit=1
+# Time=195000 | LFSR=0100 | random_num=0100 | output_bit=0
+# Time=205000 | LFSR=0010 | random_num=0010 | output_bit=0
+# Time=215000 | LFSR=0001 | random_num=0001 | output_bit=1
+# Time=225000 | LFSR=1000 | random_num=1000 | output_bit=0
+# Time=235000 | LFSR=1100 | random_num=1100 | output_bit=0
+# Time=245000 | LFSR=1110 | random_num=1110 | output_bit=0
+# Time=255000 | LFSR=1111 | random_num=1111 | output_bit=1
+# Time=265000 | LFSR=0111 | random_num=0111 | output_bit=1
+# Time=275000 | LFSR=1011 | random_num=1011 | output_bit=1
+# Time=285000 | LFSR=0101 | random_num=0101 | output_bit=1
+# Time=295000 | LFSR=1010 | random_num=1010 | output_bit=0
+# Time=305000 | LFSR=1101 | random_num=1101 | output_bit=1
+# Time=315000 | LFSR=0110 | random_num=0110 | output_bit=0
+# Time=325000 | LFSR=0011 | random_num=0011 | output_bit=1
+# Time=335000 | LFSR=1001 | random_num=1001 | output_bit=1
+# Time=345000 | LFSR=0100 | random_num=0100 | output_bit=0
+# Time=355000 | LFSR=0010 | random_num=0010 | output_bit=0
+# ** Note: $finish    : D:/Projects/science_project/prng_based_lfsr/LFSR4bit_on_paper/LFSR4bit_on_paper_verilog/tb_LFSR4bit.v(36)
+#    Time: 355 ns  Iteration: 1  Instance: /tb_LFSR4bit
+# 1
+# Break in Module tb_LFSR4bit at D:/Projects/science_project/prng_based_lfsr/LFSR4bit_on_paper/LFSR4bit_on_paper_verilog/tb_LFSR4bit.v line 36

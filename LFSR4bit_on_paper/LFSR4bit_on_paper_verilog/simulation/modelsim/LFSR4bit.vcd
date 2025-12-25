@@ -1,0 +1,53 @@
+$date
+	Wed Dec 10 02:22:13 2025
+$end
+$version
+	ModelSim Version 10.1d
+$end
+$timescale
+	1ps
+$end
+$scope module tb_LFSR4bit $end
+$var reg 1 ! clk $end
+$var reg 1 " rst $end
+$var wire 1 # lfsr [3] $end
+$var wire 1 $ lfsr [2] $end
+$var wire 1 % lfsr [1] $end
+$var wire 1 & lfsr [0] $end
+$var wire 1 ' random_num [3] $end
+$var wire 1 ( random_num [2] $end
+$var wire 1 ) random_num [1] $end
+$var wire 1 * random_num [0] $end
+$var wire 1 + output_bit $end
+$scope module uut $end
+$var wire 1 , clk $end
+$var wire 1 - rst $end
+$var reg 4 . lfsr [3:0] $end
+$var reg 4 / random_num [3:0] $end
+$var wire 1 + output_bit $end
+$var wire 1 0 feedback $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+0!
+x"
+bx .
+bx /
+x&
+x%
+x$
+x#
+x*
+x)
+x(
+x'
+x+
+x0
+x-
+0,
+$end
+#5000
+1!
+1,
