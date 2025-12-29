@@ -1,0 +1,25 @@
+class LFSR8:
+    def __init__(self, seed):       #class with 2 students: self, seed
+        self.lfsr = seed & 0b11111111      #properties of self is lfsr. (equavilent with reg[7:0] lfsr)
+    def clock(self):
+        bit7 = (self.lfsr >> 7) & 1
+        bit5 = (self.lfsr >> 5) & 1  
+        bit4 = (self.lfsr >> 4) & 1  
+        bit3 = (self.lfsr >> 3) & 1
+        feedback = bit7 ^ bit5 ^ bit4 ^ bit3  #poly: 1 + x^4 + x^5 + x^6 + x^8  
+        #creat new lfsr in new cycle
+        self.lfsr = ((feedback << 7) | (self.lfsr >> 1)) & 0b11111111 # lfsr = [feedback, lfsr[7],..., lfsr[1]]
+        return self.lfsr
+if __name__ == "__main__":
+    seed_input = input("Enter 8-bit seed in binary (e.g 10101101): ")
+    seed = int(seed_input, 2)
+
+    lfsr = LFSR8(seed)
+    print("\n 8-bit LFSR output until repetition: \n")
+    output = [seed & 1]
+    for cycle in range(1, 300):  
+        value = lfsr.clock()
+        print(f"Cycle {cycle:3d}: {format(value, '08b')}")  #cycle has at least 3 space.
+        
+        
+    

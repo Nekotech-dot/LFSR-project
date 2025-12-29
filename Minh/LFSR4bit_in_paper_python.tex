@@ -1,0 +1,25 @@
+class LFSR4:
+    def __init__(self, seed):       #class with 2 students: self, seed
+        self.lfsr = seed & 0b1111      #properties of self is lfsr. (equavilent with reg[3:0] lfsr)
+    def clock(self):
+        bit0 = (self.lfsr >> 0) & 1  #declaring for lfsr[0]
+        bit3 = (self.lfsr >> 3) & 1  #declaring for lfsr[1]
+        feedback = bit0 ^ bit3   #poly : 1 + x + x^4 
+        #creat new lfsr in new cycle
+        self.lfsr = ((feedback << 3) | (self.lfsr >> 1)) & 0b1111 # lfsr = [feedback, lfsr[3], lfsr[2], lfsr[1]]
+        return self.lfsr
+if __name__ == "__main__":
+    seed_input = input("Enter 4-bit seed in binary (e.g 1011): ")
+    seed = int(seed_input, 2)
+
+    lfsr = LFSR4(seed)
+    print("\n 4-bit LFSR output until repetition: \n")
+    output = [int(seed_input[0])]
+    for cycle in range(1, 36):  # run 35 cycles
+        value = lfsr.clock()
+        print(f"Cycle {cycle:2d}: {format(value, '04b')}")  #cycle has at least 2 space.
+        output_bit = value & 1   # take lfsr[0] as the output
+        print(f"Cycle {cycle:2d}: output bit = {output_bit}")
+        output.append(output_bit)
+    print(f"Output of this system: {output}")
+    
