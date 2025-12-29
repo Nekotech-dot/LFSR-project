@@ -1,0 +1,75 @@
+Enter 4-bit seed in binary (e.g 1011): 1011
+
+ 4-bit LFSR output until repetition 
+
+Cycle  1 0101
+Cycle  1 output bit = 1
+Cycle  2 1010
+Cycle  2 output bit = 0
+Cycle  3 1101
+Cycle  3 output bit = 1
+Cycle  4 0110
+Cycle  4 output bit = 0
+Cycle  5 0011
+Cycle  5 output bit = 1
+Cycle  6 1001
+Cycle  6 output bit = 1
+Cycle  7 0100
+Cycle  7 output bit = 0
+Cycle  8 0010
+Cycle  8 output bit = 0
+Cycle  9 0001
+Cycle  9 output bit = 1
+Cycle 10 1000
+Cycle 10 output bit = 0
+Cycle 11 1100
+Cycle 11 output bit = 0
+Cycle 12 1110
+Cycle 12 output bit = 0
+Cycle 13 1111
+Cycle 13 output bit = 1
+Cycle 14 0111
+Cycle 14 output bit = 1
+Cycle 15 1011
+Cycle 15 output bit = 1
+Cycle 16 0101
+Cycle 16 output bit = 1
+Cycle 17 1010
+Cycle 17 output bit = 0
+Cycle 18 1101
+Cycle 18 output bit = 1
+Cycle 19 0110
+Cycle 19 output bit = 0
+Cycle 20 0011
+Cycle 20 output bit = 1
+Cycle 21 1001
+Cycle 21 output bit = 1
+Cycle 22 0100
+Cycle 22 output bit = 0
+Cycle 23 0010
+Cycle 23 output bit = 0
+Cycle 24 0001
+Cycle 24 output bit = 1
+Cycle 25 1000
+Cycle 25 output bit = 0
+Cycle 26 1100
+Cycle 26 output bit = 0
+Cycle 27 1110
+Cycle 27 output bit = 0
+Cycle 28 1111
+Cycle 28 output bit = 1
+Cycle 29 0111
+Cycle 29 output bit = 1
+Cycle 30 1011
+Cycle 30 output bit = 1
+Cycle 31 0101
+Cycle 31 output bit = 1
+Cycle 32 1010
+Cycle 32 output bit = 0
+Cycle 33 1101
+Cycle 33 output bit = 1
+Cycle 34 0110
+Cycle 34 output bit = 0
+Cycle 35 0011
+Cycle 35 output bit = 1
+Output of this system [1, 1, 0, 1, 0, 1, 1, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 0, 1, 0, 1, 1, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 0, 1, 0, 1]
