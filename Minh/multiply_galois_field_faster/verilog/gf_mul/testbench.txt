@@ -1,0 +1,34 @@
+`timescale 1ns/1ps
+
+module tb_gfmul_test_one;
+
+    // Testbench signals
+    reg  [3:0] a;
+    reg  [3:0] b;
+    wire [3:0] result;
+
+    // Instantiate DUT
+    gfmul_test_one dut (
+        .a(a),
+        .b(b),
+        .result(result)
+    );
+
+    initial begin
+        // Print header
+        $display("Time\t a\t b\t result");
+
+        // Print whenever values change
+        $monitor("%0t\t %b\t %b\t %b", $time, a, b, result);
+
+        // Stimulus
+        a = 4'h1; b = 4'h1; #10;
+        a = 4'h2; b = 4'h3; #10;
+        a = 4'hF; b = 4'h1; #10;
+        a = 4'hA; b = 4'hB; #10;
+        a = 4'h7; b = 4'h7; #10;
+
+        #10 $finish;
+    end
+
+endmodule

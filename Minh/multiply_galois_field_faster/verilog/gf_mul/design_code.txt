@@ -1,0 +1,29 @@
+module gfmul_test_one(
+	input wire [3:0] a,
+	input wire [3:0] b,
+	output reg [3:0] result 
+);
+	reg [3:0] temp_a;
+	reg [3:0] temp_b;
+	reg [3:0] res;
+	integer i;
+	always@(*) begin
+		temp_a = a;
+		temp_b = b;
+		res	   = 4'b0000;
+		for (i = 0; i < 4; i = i+1) begin
+			if (temp_b[0])begin
+				res = res ^ temp_a;
+			end
+			if (temp_a[3])begin
+				temp_a = (temp_a << 1) ^ 4'b0011;    //reduced by primitive polynomial
+			end else begin
+				temp_a = temp_a << 1;
+			end
+			
+			temp_b  = temp_b >> 1;
+		end
+		result = res;
+	end
+endmodule
+			
