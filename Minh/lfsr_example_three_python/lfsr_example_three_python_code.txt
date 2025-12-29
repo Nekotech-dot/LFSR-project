@@ -1,0 +1,99 @@
+# YOUR PERSONAL — PERFECTLY STRUCTURED — LFSR CODE
+# Everything separated into clear blocks as you wanted
+
+# ========================================================
+# BLOCK 1: Binary vector → Integer (bit 0 -> 1 -> 2 -> 3 -> .. ->5)
+# ========================================================
+def vec_to_int(v):
+    return sum(v[i] << i for i in range(6)) #multiple with power of 2 :)
+
+# ========================================================
+# BLOCK 2: Build α-power table for galois field(2^6)
+# α^n = α^(n-5) ⊕ α^(n-6) for n >= 6
+# ========================================================
+alpha_vectors = []
+
+# α^0 to α^5
+alpha_vectors.append([1,0,0,0,0,0])  # α^0
+alpha_vectors.append([0,1,0,0,0,0])  # α^1
+alpha_vectors.append([0,0,1,0,0,0])  # α^2
+alpha_vectors.append([0,0,0,1,0,0])  # α^3
+alpha_vectors.append([0,0,0,0,1,0])  # α^4
+alpha_vectors.append([0,0,0,0,0,1])  # α^5
+
+for n in range(6, 63):
+    a = alpha_vectors[n-5]
+    b = alpha_vectors[n-6]
+    new_vec = [(a[i] ^ b[i]) for i in range(6)]  # alpha_vectors[n] = alpha_vectors[n-5] + alpha_vectors[n-6]
+    alpha_vectors.append(new_vec)
+
+# ========================================================
+# BLOCK 3: Lookup tables (fast conversion)
+# Transform from power to binary vector and so on.
+# ========================================================
+# Integer → α-power
+int_to_power = {}
+# Vector (tuple) → α-power
+vec_to_power = {}
+
+for k in range(63):
+    vec = tuple(alpha_vectors[k]) #()
+    integer = vec_to_int(alpha_vectors[k])
+    int_to_power[integer] = k
+    vec_to_power[vec] = k
+
+# Power → vector (easy)
+power_to_vec = alpha_vectors  # direct list access
+
+# ========================================================
+# BLOCK 4: Example 3:
+# ========================================================
+coeff_vecs = [
+    [1,0,1,1,0,1],  # c0 → α^44
+    [1,0,0,1,0,1],  # c1 → α^23
+    [1,1,0,0,0,1],  # c2 → α^11
+    [1,1,0,1,1,0],  # c3 → α^38
+    [1,0,0,1,0,1]   # c4 → α^23
+]
+
+# Convert to α-powers
+c_powers = [vec_to_power[tuple(v)] for v in coeff_vecs]  # [44, 23, 11, 38, 23]
+
+# Seed : initial state
+state_powers = c_powers.copy()  # the same with coeff
+
+# ========================================================
+# BLOCK 5: LFSR — YOUR THINKING WAY (α-powers + XOR)
+# ========================================================
+print("YOUR LFSR — using α-powers (Fibonacci: left shift)")
+print("t | output vector     | α-power | feedback α-power")
+print("-" * 50)
+
+for t in range(10):
+    # add exponents instead of duplicating them
+    exponents = [(c_powers[j] + state_powers[j]) % 63 for j in range(5)]
+    
+    # Adding in GF(2)
+    from collections import Counter
+    count = Counter(exponents)
+    surviving = [exp for exp, cnt in count.items() if cnt % 2 == 1]
+    
+    # Final feedback power
+    if not surviving: #no component
+        fb_power = None  
+    elif len(surviving) == 1: #1 component
+        fb_power = surviving[0]
+    else:
+        # XOR multiple → look up in table
+        fb_vec = [0]*6
+        for exp in surviving:
+            v = power_to_vec[exp]
+            fb_vec = [(fb_vec[i] ^ v[i]) for i in range(6)]
+        fb_power = vec_to_power[tuple(fb_vec)]
+    
+    # Output = feedback
+    output_vec = power_to_vec[fb_power]
+    print(f"{t+1} | {output_vec} | α^{fb_power:2}     | α^{fb_power}")
+    print(surviving)
+    # LEFT SHIFT: s0 ← s1 ← s2 ← s3 ← s4 ← feedback
+    state_powers = state_powers[1:] + [fb_power]   
