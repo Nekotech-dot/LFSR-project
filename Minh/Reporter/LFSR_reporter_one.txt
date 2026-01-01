@@ -1,0 +1,45 @@
+\documentclass[13pt]{article}
+\usepackage[a4paper,top=2.0cm,bottom=2.0cm,left=3.0cm,right=2.0cm]{geometry}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T5]{fontenc}
+\usepackage[vietnamese]{babel}
+
+\begin{document}
+    \begin{minipage}[t]{0.3\textwidth} %align top with scale 45%
+    \raggedright
+    \begin{center}
+        ĐẠI HỌC PHENIKAA\\
+        \textbf{TÊN ĐƠN VỊ \ldots}\\
+        \vspace{-0.4em}
+        \rule{2cm}{0.4pt}
+    \end{center}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t]{0.6\textwidth}
+    \begin{center}
+        \textbf{CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM}\\
+        \textbf{Độc lập -- Tự do -- Hạnh phúc}\\
+        \vspace{-0.4em}
+        \rule{5.5cm}{0.4pt}
+    \end{center}
+    \end{minipage}
+    \hfill
+
+    \vspace{0.3cm}
+    \hfill \textit{Hà Nội, ngày \ldots\ tháng \ldots\ năm \ldots}
+    \vspace{1cm}
+    \begin{center}
+        {\fontsize{13pt}{8pt}\selectfont\textbf{BÁO CÁO TIẾN ĐỘ THỰC HIỆN ĐỀ TÀI SINH VIÊN}}\\
+        {\fontsize{13pt}{8pt}\textbf{ NGHIÊN CỨU KHOA HỌC NĂM HỌC 20\ldots--20\ldots}}
+    \end{center}
+    %Kinh gui?
+    \begin{tabbing}
+    \hspace{1.5cm}\= \hspace{2cm}\= \kill
+    \> \textbf{Kính gửi:} \> -- Lãnh đạo Đại học Phenikaa\\
+                      \>\> -- Ban Khoa học Công nghệ\\
+                      \>\> -- \ldots
+    \end{tabbing}
+
+    
+\end{document}
