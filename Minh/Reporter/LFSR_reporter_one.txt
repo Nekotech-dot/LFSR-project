@@ -5,41 +5,84 @@
 \usepackage[T5]{fontenc}
 \usepackage[vietnamese]{babel}
 
+\usepackage{titlesec}
+
+% Roman section numbering: I, II, III...
+\renewcommand{\thesection}{\Roman{section}}
+
+% Section style (same size as body text)
+\titleformat{\section}
+  {\bfseries\fontsize{13pt}{15pt}\selectfont}
+  {\thesection.}
+  {0.5em}
+  {}
+
+\titlespacing{\section}{0pt}{0.4cm}{0.2cm}
+\renewcommand{\thesubsection}{\arabic{subsection}}
+
+\titleformat{\subsection}
+  {\normalfont\fontsize{13pt}{15pt}\selectfont}
+  {\thesubsection.}
+  {0.5em}
+  {}
+
+\titlespacing{\subsection}{0pt}{0.2cm}{0.1cm}
+
+
 \begin{document}
-    \begin{minipage}[t]{0.3\textwidth} %align top with scale 45%
-    \raggedright
-    \begin{center}
-        ĐẠI HỌC PHENIKAA\\
-        \textbf{TÊN ĐƠN VỊ \ldots}\\
-        \vspace{-0.4em}
-        \rule{2cm}{0.4pt}
-    \end{center}
+
+% ===== HEADER =====
+    \begin{minipage}[t]{0.3\textwidth}
+        \raggedright
+        \begin{center}
+            ĐẠI HỌC PHENIKAA\\
+            \textbf{TÊN ĐƠN VỊ \ldots}\\
+            \vspace{-0.4em}
+            \rule{2cm}{0.4pt}
+        \end{center}
     \end{minipage}
-    \hfill
+        \hfill
     \begin{minipage}[t]{0.6\textwidth}
-    \begin{center}
-        \textbf{CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM}\\
-        \textbf{Độc lập -- Tự do -- Hạnh phúc}\\
-        \vspace{-0.4em}
-        \rule{5.5cm}{0.4pt}
-    \end{center}
+        \begin{center}
+            \textbf{CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM}\\
+            \textbf{Độc lập -- Tự do -- Hạnh phúc}\\
+            \vspace{-0.4em}
+            \rule{5.5cm}{0.4pt}
+        \end{center}
     \end{minipage}
-    \hfill
 
-    \vspace{0.3cm}
-    \hfill \textit{Hà Nội, ngày \ldots\ tháng \ldots\ năm \ldots}
-    \vspace{1cm}
-    \begin{center}
-        {\fontsize{13pt}{8pt}\selectfont\textbf{BÁO CÁO TIẾN ĐỘ THỰC HIỆN ĐỀ TÀI SINH VIÊN}}\\
-        {\fontsize{13pt}{8pt}\textbf{ NGHIÊN CỨU KHOA HỌC NĂM HỌC 20\ldots--20\ldots}}
-    \end{center}
-    %Kinh gui?
+\vspace{0.3cm}
+\hfill \textit{Hà Nội, ngày \ldots\ tháng \ldots\ năm \ldots}
+
+\vspace{1cm}
+\begin{center}
+    {\fontsize{13pt}{15pt}\selectfont\textbf{BÁO CÁO TIẾN ĐỘ THỰC HIỆN ĐỀ TÀI SINH VIÊN}}\\
+    {\fontsize{13pt}{15pt}\selectfont\textbf{NGHIÊN CỨU KHOA HỌC NĂM HỌC 20\ldots--20\ldots}}
+\end{center}
+
+% ===== KÍNH GỬI =====
+\vspace{0.5cm}
     \begin{tabbing}
-    \hspace{1.5cm}\= \hspace{2cm}\= \kill
-    \> \textbf{Kính gửi:} \> -- Lãnh đạo Đại học Phenikaa\\
-                      \>\> -- Ban Khoa học Công nghệ\\
-                      \>\> -- \ldots
+        \hspace{1.5cm}\= \hspace{2cm}\= \kill
+        \> \textbf{Kính gửi:} \> -- Lãnh đạo Đại học Phenikaa\\
+        \>\> -- Ban Khoa học Công nghệ\\
+        \>\> -- \ldots
     \end{tabbing}
-
     
+% ===== SECTION I =====
+\section{THÔNG TIN CHUNG}
+{\fontsize{13pt}{15pt}\selectfont
+
+    \begin{tabbing}
+        \hspace{1.5cm}\= \hspace{6cm}\= \kill
+        - Tên đề tài:\> \\
+        
+        - Chủ nhiệm đề tài: Trương Hải Minh\>
+        \hspace{6.5cm}Lớp: EEE4.24106.1 \> \hspace{4.8cm} Khoa: Điện--Điện tử\\
+        - Cán bộ hướng dẫn: ThS.~Đinh Văn Nam\> \\
+    \end{tabbing}}
+\section{TIẾN ĐỘ THỰC HIỆN ĐỀ TÀI}
+    \subsection{Các công việc đã hoàn thành:}
+    
+    \subsection{Các công việc dự kiến thực hiện trong thời gian tới:}
 \end{document}
