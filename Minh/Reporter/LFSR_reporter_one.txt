@@ -27,7 +27,7 @@
   {}
 
 \titlespacing{\subsection}{0pt}{0.2cm}{0.1cm}
-
+\usepackage{enumitem}
 
 \begin{document}
 
@@ -61,13 +61,14 @@
 \end{center}
 
 % ===== KÍNH GỬI =====
-\vspace{0.5cm}
+{\fontsize{13pt}{13pt}\selectfont
+\vspace{0.2cm}
     \begin{tabbing}
-        \hspace{1.5cm}\= \hspace{2cm}\= \kill
-        \> \textbf{Kính gửi:} \> -- Lãnh đạo Đại học Phenikaa\\
-        \>\> -- Ban Khoa học Công nghệ\\
-        \>\> -- \ldots
-    \end{tabbing}
+        \hspace{1cm}\= \hspace{2.5cm}\= \kill
+        \> \textbf{Kính gửi:} \> \textbf{-- Lãnh đạo Đại học Phenikaa}\\
+        \>\> \textbf{-- Ban Khoa học Công nghệ}\\
+        \>\>\textbf{-- \ldots}
+    \end{tabbing}}
     
 % ===== SECTION I =====
 \section{THÔNG TIN CHUNG}
@@ -75,14 +76,26 @@
 
     \begin{tabbing}
         \hspace{1.5cm}\= \hspace{6cm}\= \kill
-        - Tên đề tài:\> \\
+       \hspace{0.01em} - Tên đề tài: Thiết kế và mô phỏng bộ sinh số giả ngẫu nhiên (LFSR-based PRNG) \\[-0.15em] \hspace{0.3em} và ứng dụng trong mã hóa đơn giản.\\
         
-        - Chủ nhiệm đề tài: Trương Hải Minh\>
+        \hspace{0.01em} - Chủ nhiệm đề tài: Trương Hải Minh\>
         \hspace{6.5cm}Lớp: EEE4.24106.1 \> \hspace{4.8cm} Khoa: Điện--Điện tử\\
-        - Cán bộ hướng dẫn: ThS.~Đinh Văn Nam\> \\
+        \hspace{0.01em} - Cán bộ hướng dẫn: ThS.~Đinh Văn Nam\> \\
     \end{tabbing}}
 \section{TIẾN ĐỘ THỰC HIỆN ĐỀ TÀI}
-    \subsection{Các công việc đã hoàn thành:}
+    \subsection{Các công việc đã hoàn thành:
+    }{\fontsize{12pt}{14pt}\selectfont
+    \begin{itemize}[
+      label=-,
+      leftmargin=0.5cm,
+      itemsep=0.1em,
+      topsep=0.1em
+        ]
+    \item Hiểu về cơ chế hoạt động của hệ thống \\
+    \noindent Bộ sinh số giả ngẫu nhiên dựa trên LFSR hoạt động bằng cách dịch các thanh ghi và phản hồi tuyến tính thông qua các đặc trưng....
+    \item Nghiên cứu các tài liệu liên quan đến đề tài.
+    \item Xây dựng khung phương pháp thực hiện đề tài.
+    \end{itemize}}
     
     \subsection{Các công việc dự kiến thực hiện trong thời gian tới:}
 \end{document}
