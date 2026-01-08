@@ -1,5 +1,5 @@
 \documentclass[13pt]{article}
-\usepackage[a4paper,top=2.0cm,bottom=2.0cm,left=3.0cm,right=2.0cm]{geometry}
+\usepackage[a4paper,top=2.0cm,bottom=2.0cm,left=2.0cm,right=2.0cm]{geometry}
 
 \usepackage[utf8]{inputenc}
 \usepackage[T5]{fontenc}
@@ -72,7 +72,7 @@
     
 % ===== SECTION I =====
 \section{THÔNG TIN CHUNG}
-{\fontsize{13pt}{15pt}\selectfont
+{\fontsize{12pt}{14pt}\selectfont
 
     \begin{tabbing}
         \hspace{1.5cm}\= \hspace{6cm}\= \kill
@@ -80,22 +80,59 @@
         
         \hspace{0.01em} - Chủ nhiệm đề tài: Trương Hải Minh\>
         \hspace{6.5cm}Lớp: EEE4.24106.1 \> \hspace{4.8cm} Khoa: Điện--Điện tử\\
-        \hspace{0.01em} - Cán bộ hướng dẫn: ThS.~Đinh Văn Nam\> \\
+        \hspace{0.01em} - Cán bộ hướng dẫn: ThS.~Đinh Văn Nam\> 
     \end{tabbing}}
 \section{TIẾN ĐỘ THỰC HIỆN ĐỀ TÀI}
-    \subsection{Các công việc đã hoàn thành:
-    }{\fontsize{12pt}{14pt}\selectfont
+    
+\subsection{Các công việc đã hoàn thành}
+{\fontsize{12pt}{14pt}\selectfont
+\begin{itemize}[
+  label=-,
+  leftmargin=0.5cm,
+  itemsep=0pt,        % no extra vertical space between items
+  parsep=0pt,         % no extra space between paragraphs inside items
+  topsep=0pt          % no extra space before/after the list
+]
+  \item Psuedo-Random Number Generator và cơ chế Linear-Feedback Shift Register:
     \begin{itemize}[
-      label=-,
-      leftmargin=0.5cm,
-      itemsep=0.1em,
-      topsep=0.1em
-        ]
-    \item Hiểu về cơ chế hoạt động của hệ thống \\
-    \noindent Bộ sinh số giả ngẫu nhiên dựa trên LFSR hoạt động bằng cách dịch các thanh ghi và phản hồi tuyến tính thông qua các đặc trưng....
-    \item Nghiên cứu các tài liệu liên quan đến đề tài.
-    \item Xây dựng khung phương pháp thực hiện đề tài.
-    \end{itemize}}
+      label=\textperiodcentered,
+      leftmargin=1em,
+      itemsep=0pt,
+      parsep=0pt,
+      topsep=0pt
+    ]
+      \item Hệ thống sinh số giả ngẫu nhiên và vai trò của seed: Trong một bộ sinh số giả ngẫu nhiên (PRNG), điểm khởi đầu là một giá trị và gọi là \emph{seed}.
+      \item LFSR và đa thức sinh: LFSR là một tập con của hệ sinh số giả ngẫu nhiên và hoạt động theo cơ chế dịch bit tuyến tính, có phản hồi.
+      \item Mô hình truyền thống của LFSR (nối dây theo phương pháp \emph{Fibonacci})
+      \item Chu kỳ và đa thức nguyên thủy: 
+    \end{itemize}
+
+  \item Hướng phát triển được tham khảo
+    \begin{itemize}[
+      label=\textperiodcentered,
+      leftmargin=1em,
+      itemsep=0pt,
+      parsep=0pt,
+      topsep=0pt
+    ]
+      \item Cấu trúc nối dây Fibonacci
+      \item Cấu trúc Galois Field
+      \item Phân tích hệ thống \(m\) thanh ghi \(n\) bit
+    \end{itemize}
+
+  \item Hướng tự phát triển và mô hình hệ thống hiện tại
+    \begin{itemize}[
+      label=\textperiodcentered,
+      leftmargin=1em,
+      itemsep=0pt,
+      parsep=0pt,
+      topsep=0pt
+    ]
+      \item Mô hình thử nghiệm
+      \item Các cải tiến dự kiến
+        \end{itemize}
+    \end{itemize}
+    }
     
     \subsection{Các công việc dự kiến thực hiện trong thời gian tới:}
 \end{document}

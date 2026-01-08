@@ -1,0 +1,26 @@
+\documentclass{article}
+\usepackage{tikz}
+\begin{document}
+
+\begin{tikzpicture}[>=latex,thick]
+
+% Vẽ khối flip-flop
+\draw (0,0) rectangle (2,2);
+
+% Nhãn D và Q
+\node at (0.3,1.5) {D};
+\node at (1.7,1.5) {Q};
+
+% Clock input (tam giác nhỏ)
+\draw (0.5,0.5) -- (0,0.3) -- (0,0.7) -- cycle;
+\node[left] at (-0.3,0.5) {Clock};
+
+% Đầu vào D
+\draw[->] (-1,1.5) -- (0,1.5);
+
+% Đầu ra Q
+\draw[->] (2,1.5) -- (3,1.5);
+
+\end{tikzpicture}
+
+\end{document}
