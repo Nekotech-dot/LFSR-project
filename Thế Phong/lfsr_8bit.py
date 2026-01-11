@@ -3,7 +3,7 @@ class GaloisLFSR_LeftShift:
         self.state = seed & 0xFF  # Đảm bảo chỉ dùng 8 bit
         if self.state == 0:
             raise ValueError("Seed không thể là 0.")
-        # Tương ứng: x^8(implied), x^6, x^5, x^4
+        # Tương ứng: x^8(implied), x^4, x^3, x^2
         # Vì dịch trái, ta kiểm tra MSB, nếu MSB=1 thì XOR với phần còn lại
         self.taps = 0b00011101
 
@@ -43,4 +43,5 @@ while True:
     # 3. ĐIỀU KIỆN DỪNG
     if ket_qua == gia_tri_ban_dau:
         print(f"--> Đã phát hiện lặp lại! Chu kỳ dừng sau {dem_buoc} bước.")
+
         break
