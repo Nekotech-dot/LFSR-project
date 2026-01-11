@@ -1,4 +1,5 @@
 Explaination for lfsr_8bit_galois_field.
+
 Overview: 
 Simulating digital model of pseudo-random number generater through 8 bit LFSR (linear-feedback shift register)
 
