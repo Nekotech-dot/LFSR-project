@@ -4,6 +4,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T5]{fontenc}
 \usepackage[vietnamese]{babel}
+\usepackage{tikz}
 
 \usepackage{titlesec}
 
@@ -103,10 +104,149 @@
     ]
       \item Hệ thống sinh số giả ngẫu nhiên và vai trò của seed: Trong một bộ sinh số giả ngẫu nhiên (PRNG), điểm khởi đầu là một giá trị và gọi là \emph{seed}.
       \item LFSR và đa thức sinh: LFSR là một tập con của hệ sinh số giả ngẫu nhiên và hoạt động theo cơ chế dịch bit tuyến tính, có phản hồi.
-      \item Mô hình truyền thống của LFSR (nối dây theo phương pháp \emph{Fibonacci})
-      \item Chu kỳ và đa thức nguyên thủy: 
-    \end{itemize}
+      \item Cơ chế hoạt động: Ban đầu, cho một dãy số bất kỳ khác 0 vào hệ thống, dãy số này được gọi là \emph{seed}. Được thể hiện dưới Hình 1.
 
+    %figure for system 
+    \begin{figure}[ht] 
+    \centering
+    \begin{tikzpicture}[>=latex,thick]
+ 
+    % Flip-flop 1
+    \draw (0,0) rectangle (2,2);
+    \node at (0.3,1.5) {D};
+    \node at (1.7,1.5) {Q};
+    \draw (0.5,0.5) -- (0,0.3) -- (0,0.7) -- cycle;
+    \node[left] at (-0.5,-0.5) {Clock};
+    \draw[->] (-1,1.5) -- (0,1.5); % Input D1
+    \draw[->] (2,1.5) -- (3,1.5); % Output Q1
+    \node[left] at (-1, 1.5) {\fontsize{12pt}{14pt}\selectfont{Seed}};
+    
+    % Flip-flop 2
+    \draw (3,0) rectangle (5,2);
+    \node at (3.3,1.5) {D};
+    \node at (4.7,1.5) {Q};
+    \draw (3.5,0.5) -- (3,0.3) -- (3,0.7) -- cycle;
+    \draw[->] (5,1.5) -- (6,1.5); % Output Q2
+    
+    
+    
+    % Flip-flop 3
+    \draw (6,0) rectangle (8,2);
+    \node at (6.3,1.5) {D};
+    \node at (7.7,1.5) {Q};
+    \draw (6.5,0.5) -- (6,0.3) -- (6,0.7) -- cycle;
+    \draw[->] (8,1.5) -- (9,1.5); % Output Q3
+    
+    
+    
+    % Flip-flop 4
+    \draw (9,0) rectangle (11,2);
+    \node at (9.3,1.5) {D};
+    \node at (10.7,1.5) {Q};
+    \draw (9.5,0.5) -- (9,0.3) -- (9,0.7) -- cycle;
+    \draw[->] (11,1.5) -- (12,1.5); % Output Q4
+    \node at (12.6, 1.5) {Output};
+    
+    % wiring by clk
+    \draw[-] (-0.5,-0.5) -- (8.8,-0.5);
+    
+    \draw[-] (-0.215, 0.5) -- (0, 0.5);
+    \draw[-] (-0.2,-0.5) -- (-0.2,0.5);
+    
+    \draw[-] (2.785, 0.5) -- (3, 0.5);
+    \draw[-] (2.8,-0.5) -- (2.8,0.5);
+    
+    \draw[-] (5.785, 0.5) -- (6, 0.5);
+    \draw[-] (5.8,-0.5) -- (5.8,0.5);
+    
+    \draw[-] (8.785, 0.5) -- (9, 0.5);
+    \draw[-] (8.8,-0.5) -- (8.8,0.5);
+    
+    \end{tikzpicture}
+    \caption{Seed đi vào hệ thống}
+    \end{figure}
+
+   \item Cách thức hoạt động: Các bit đồng thời dịch sang phải một đơn vị, bit trái ngoài cùng (vị trí $x^3$) sẽ được thay thế bằng kết quả của phép XOR giữa bit ở ví trị $x$ và vị trí số 1. Được thể hiện rõ ràng ở Hình 2. Đây là cách nối dây truyền thống và được đặc tên là fibonacci. Sau này, con người đã chế tạo ra cách nối dây Galois field để cho hệ thống nhanh hơn.
+    \begin{figure}[ht]
+    \hspace*{1cm}
+    \begin{tikzpicture}[>=latex,thick]
+    
+ 
+    % Flip-flop 1
+    \draw (0,0) rectangle (2,2);
+    \node at (0.3,1.5) {D};
+    \node at (1.7,1.5) {Q};
+    \draw (0.5,0.5) -- (0,0.3) -- (0,0.7) -- cycle;
+    \node[left] at (-0.5,-0.8) {Clock};
+    \draw[->] (-0.5,1.5) -- (0,1.5); % Input D1
+    \draw[->] (2,1.5) -- (3,1.5); % Output Q1
+    
+    \node at (1, -0.25) {$x^3$};
+    %\node[left] at (-1, 1.5) {\fontsize{13pt}{15pt}\selectfont{Seed}};
+    
+    % Flip-flop 2
+    \draw (3,0) rectangle (5,2);
+    \node at (3.3,1.5) {D};
+    \node at (4.7,1.5) {Q};
+    \draw (3.5,0.5) -- (3,0.3) -- (3,0.7) -- cycle;
+    \draw[->] (5,1.5) -- (6,1.5); % Output Q2
+    \node at (4, -0.25) {$x^2$};
+    
+    % Flip-flop 3
+    \draw (6,0) rectangle (8,2);
+    \node at (6.3,1.5) {D};
+    \node at (7.7,1.5) {Q};
+    \draw (6.5,0.5) -- (6,0.3) -- (6,0.7) -- cycle;
+    \draw[->] (8,1.5) -- (9,1.5); % Output Q3
+    \draw[->] (8.5,1.5) -- (8.5,2.1);
+    \node at (7, -0.25) {$x$};
+    
+    
+    
+    
+    % Flip-flop 4
+    \draw (9,0) rectangle (11,2);
+    \node at (9.3,1.5) {D};
+    \node at (10.7,1.5) {Q};
+    \draw (9.5,0.5) -- (9,0.3) -- (9,0.7) -- cycle;
+    \draw[->] (11,1.5) -- (12,1.5); % Output Q4
+    \draw[-] (11.5,1.5) -- (11.5,2.5);
+    \draw[->] (11.5, 2.5) -- (8.9,2.5);
+    \node at (12.6, 1.5) {Output};
+    \node at (10, -0.25) {$1$};
+    
+    % wiring by clk
+    \draw[-] (-0.5,-0.5) -- (8.8,-0.5);
+        
+    \draw[-] (-0.215, 0.5) -- (0, 0.5);
+    \draw[-] (-0.2,-0.5) -- (-0.2,0.5);
+        
+    \draw[-] (2.785, 0.5) -- (3, 0.5);
+    \draw[-] (2.8,-0.5) -- (2.8,0.5);
+        
+    \draw[-] (5.785, 0.5) -- (6, 0.5);
+    \draw[-] (5.8,-0.5) -- (5.8,0.5);
+        
+    \draw[-] (8.785, 0.5) -- (9, 0.5);
+    \draw[-] (8.8,-0.5) -- (8.8,0.5);
+    
+    
+    %draw xor logic
+    \draw (8.5,2.5) circle (0.4); 
+    \node at (8.5,2.5) {\fontsize{20pt}{10pt}\selectfont +};
+    \node at (9.4, 2.8) {\fontsize{10}{12pt}\selectfont{XOR}};
+    
+    %connect to input
+    \draw[-] (8.1, 2.5) -- (-0.5, 2.5);
+    \draw[-] (-0.5, 2.5) -- (-0.5, 1.5);
+    \end{tikzpicture}
+    \caption{Hệ thống fibonacci}
+    \end{figure}
+    \newpage
+      \item Galois field: Galois field là một trường số học để thể hiện hệ thống dưới dạng toán học với dấu cộng thay cho phép \emph{XOR} và dấu nhân thay cho phép \emph{AND}. Lý thuyết của galois field cũng cho rằng hệ thống này sẽ hoạt động sinh ra các chuỗi 4 bit kết quả khác nhau nếu như seed khác 0 và đa thức sinh của hệ thống là \emph{đa thức nguyên thủy}. 
+      \item Generator Polynomial: Được hiểu là đa thức toán học thể hiện cho hệ thống, đa thức sinh có dạng $x^4 + a.x^3 + b.x*2 + c.x + 1$ với 4 bit (a, b, c,d) thể hiện cho các dây xuất hiện ở từng vị trí tương ứng (1 tương đương với có dây và 0 tương đương với không có dây). Ví dụ với hình 2: ta có $a=0, b= 0, c = 1, d = 1$ và đa thức sinh có dạng: $x^4 + x + 1$. Đây được coi như đa thức nguyên thủy dựa trên bảng có sẵn trong Galois field. 4bit seed đầu vào sẽ được thể hiện dưới dạng ($x_1, x_2, x_3, x_4$) sẽ được insert lần lượt vào các vị trí ($x^4, x^3, x^2, x^1$) của đa thức sinh.
+      
+    \end{itemize}
   \item Hướng phát triển được tham khảo
     \begin{itemize}[
       label=\textperiodcentered,
