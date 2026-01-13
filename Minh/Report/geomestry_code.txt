@@ -2,25 +2,75 @@
 \usepackage{tikz}
 \begin{document}
 
-\begin{tikzpicture}[>=latex,thick]
-
-% Vẽ khối flip-flop
+\begin{tikzpicture}[>=latex,thick, transform canvas={xshift= 0.5 cm}]
+ 
+% Flip-flop 1
 \draw (0,0) rectangle (2,2);
-
-% Nhãn D và Q
 \node at (0.3,1.5) {D};
 \node at (1.7,1.5) {Q};
-
-% Clock input (tam giác nhỏ)
 \draw (0.5,0.5) -- (0,0.3) -- (0,0.7) -- cycle;
-\node[left] at (-0.3,0.5) {Clock};
+\node[left] at (-0.5,-0.8) {Clock};
+\draw[->] (-0.5,1.5) -- (0,1.5); % Input D1
+\draw[->] (2,1.5) -- (3,1.5); % Output Q1
 
-% Đầu vào D
-\draw[->] (-1,1.5) -- (0,1.5);
+\node at (1, -0.25) {$x^3$};
+%\node[left] at (-1, 1.5) {\fontsize{13pt}{15pt}\selectfont{Seed}};
 
-% Đầu ra Q
-\draw[->] (2,1.5) -- (3,1.5);
+% Flip-flop 2
+\draw (3,0) rectangle (5,2);
+\node at (3.3,1.5) {D};
+\node at (4.7,1.5) {Q};
+\draw (3.5,0.5) -- (3,0.3) -- (3,0.7) -- cycle;
+\draw[->] (5,1.5) -- (6,1.5); % Output Q2
+\node at (4, -0.25) {$x^2$};
 
+% Flip-flop 3
+\draw (6,0) rectangle (8,2);
+\node at (6.3,1.5) {D};
+\node at (7.7,1.5) {Q};
+\draw (6.5,0.5) -- (6,0.3) -- (6,0.7) -- cycle;
+\draw[->] (8,1.5) -- (9,1.5); % Output Q3
+\draw[->] (8.5,1.5) -- (8.5,3);
+\node at (7, -0.25) {$x$};
+
+
+
+
+% Flip-flop 4
+\draw (9,0) rectangle (11,2);
+\node at (9.3,1.5) {D};
+\node at (10.7,1.5) {Q};
+\draw (9.5,0.5) -- (9,0.3) -- (9,0.7) -- cycle;
+\draw[->] (11,1.5) -- (12,1.5); % Output Q4
+\draw[-] (11.5,1.5) -- (11.5,3.5);
+\draw[->] (11.5, 3.5) -- (9,3.5);
+\node at (12.6, 1.5) {Output};
+\node at (10, -0.25) {$1$};
+
+% wiring by clk
+\draw[-] (-0.5,-0.5) -- (8.8,-0.5);
+    
+\draw[-] (-0.215, 0.5) -- (0, 0.5);
+\draw[-] (-0.2,-0.5) -- (-0.2,0.5);
+    
+\draw[-] (2.785, 0.5) -- (3, 0.5);
+\draw[-] (2.8,-0.5) -- (2.8,0.5);
+    
+\draw[-] (5.785, 0.5) -- (6, 0.5);
+\draw[-] (5.8,-0.5) -- (5.8,0.5);
+    
+\draw[-] (8.785, 0.5) -- (9, 0.5);
+\draw[-] (8.8,-0.5) -- (8.8,0.5);
+
+
+%draw xor logic
+\draw (8.5,3.5) circle (0.5); 
+\node at (8.5,3.5) {\fontsize{20pt}{10pt}\selectfont +};
+\node at (9.5, 4) {\fontsize{12pt}{12pt}\selectfont{XOR}};
+
+%connect to input
+\draw[-] (8, 3.5) -- (-0.5, 3.5);
+\draw[-] (-0.5, 3.5) -- (-0.5, 1.5);
 \end{tikzpicture}
 
 \end{document}
