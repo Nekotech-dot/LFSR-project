@@ -255,9 +255,86 @@
       parsep=0pt,
       topsep=0pt
     ]
-      \item Cấu trúc nối dây Fibonacci
-      \item Cấu trúc Galois Field
-      \item Phân tích hệ thống \(m\) thanh ghi \(n\) bit
+      \item Cấu trúc Galois Field: Đây là một cách nối dây khác và tối ưu hơn so với hệ thống fibonacci.
+      \begin{figure}[ht]
+    \hspace*{1cm}
+    \begin{tikzpicture}[>=latex,thick]
+    
+ 
+    % Flip-flop 1
+    \draw (0,0) rectangle (2,2);
+    \node at (0.3,1.5) {D};
+    \node at (1.7,1.5) {Q};
+    \draw (0.5,0.5) -- (0,0.3) -- (0,0.7) -- cycle;
+    \node[left] at (-0.5,-0.8) {Clock};
+    \draw[->] (-0.5,1.5) -- (0,1.5); % Input D1
+    \draw[->] (2,1.5) -- (3,1.5); % Output Q1
+    
+    \node at (1, -0.25) {$x^3$};
+    %\node[left] at (-1, 1.5) {\fontsize{13pt}{15pt}\selectfont{Seed}};
+    
+    % Flip-flop 2
+    \draw (3,0) rectangle (5,2);
+    \node at (3.3,1.5) {D};
+    \node at (4.7,1.5) {Q};
+    \draw (3.5,0.5) -- (3,0.3) -- (3,0.7) -- cycle;
+    \draw[->] (5,1.5) -- (6,1.5); % Output Q2
+    \node at (4, -0.25) {$x^2$};
+    
+    % Flip-flop 3
+    \draw (6,0) rectangle (8,2);
+    \node at (6.3,1.5) {D};
+    \node at (7.7,1.5) {Q};
+    \draw (6.5,0.5) -- (6,0.3) -- (6,0.7) -- cycle;
+    \draw[->] (8,1.5) -- (8.9,1.5); % Output Q3
+    \draw[->] (9.3,2.5) -- (9.3,1.9);
+    \node at (7, -0.25) {$x$};
+    
+    
+    
+    
+    % Flip-flop 4
+    \draw (10.5,0) rectangle (12.5,2);
+    \node at (10.8,1.5) {D};
+    \node at (12.2,1.5) {Q};
+    \draw (11,0.5) -- (10.5,0.3) -- (10.5,0.7) -- cycle;
+    \draw[-] (12.5,1.5) -- (13.5,1.5); % Output Q4
+    \draw[-] (13.5,1.5) -- (13.5,2.5);
+    \draw[-] (13.5, 2.5) -- (-0.5,2.5);
+   % \node at (12.6, 1.5) {Output};
+    \node at (11.5, -0.25) {$1$};
+
+    \draw[->](9.7,1.5) -- (10.5,1.5) ;
+    
+    % wiring by clk
+    \draw[-] (-0.5,-0.5) -- (10.285,-0.5);
+        
+    \draw[-] (-0.215, 0.5) -- (0, 0.5);
+    \draw[-] (-0.2,-0.5) -- (-0.2,0.5);
+        
+    \draw[-] (2.785, 0.5) -- (3, 0.5);
+    \draw[-] (2.8,-0.5) -- (2.8,0.5);
+        
+    \draw[-] (5.785, 0.5) -- (6, 0.5);
+    \draw[-] (5.8,-0.5) -- (5.8,0.5);
+        
+    \draw[-] (10.285, 0.5) -- (10.5, 0.5);
+    \draw[-] (10.285,-0.5) -- (10.285,0.5);
+    
+    
+    %draw xor logic
+    \draw (9.3,1.5) circle (0.4); 
+    \node at (9.3,1.5) {\fontsize{22pt}{10pt}\selectfont +};
+    \node at (9.4, 0.9) {\fontsize{10}{12pt}\selectfont{XOR}};
+    
+    %connect to input
+    %\draw[-] (8.1, 2.5) -- (-0.5, 2.5);
+    \draw[-] (-0.5, 2.5) -- (-0.5, 1.5);
+    \end{tikzpicture}
+    \caption{ Hệ thống galois field}
+    \end{figure}
+    \item Giải thích điểm phát triển so với hệ thống trước đó: Hệ thống galois field thể hiện internal xor thay vì external xor như hệ thống fibonacci. Điều này khiến cho bit sau khi xor sẽ cập nhật nhanh hơn (Sự nhanh hơn của hệ thống galois field thể hiện rõ ràng hơn ở hệ thống có nhiều phép xor).
+    \item Phân tích hệ thống \(m\) thanh ghi \(n\) bit: Ý tưởng chính của hệ thống là tạo ra m thanh ghi và mỗi thanh ghi sẽ có n bit. Như vậy, hệ thống sẽ có độ phức tạp cao hơn, tạo ra chuỗi kết quả dài hơn với $(2^n)^m -1$ sequences (Do hoạt động trên của hệ thống dựa trên m thanh register $GF(2^n)$ và phải trừ trường hợp tất cả các vị trí có giá trị là 0). Tuy nhiên, có hai điểm còn hạn chế trong tài liệu tham khảo này. Thứ nhất là về phép nhân giữa 2 số 4 bit chưa được tối ưu (còn phải phụ thuộc vào bảng cho trước trong $GF(2^4)$). Với bảng cho trước như vậy, hệ thống sẽ tốn một khoảng thời gian để tìm kiếm LUT (Look up table), dung lượng thanh ghi để lưu trữ bảng đó. Tiếp theo, hệ thống trong đề xuất vẫn còn sử dụng cách nối dây theo cấu trúc fibonacci.
     \end{itemize}
 
   \item Hướng tự phát triển và mô hình hệ thống hiện tại
@@ -268,11 +345,21 @@
       parsep=0pt,
       topsep=0pt
     ]
-      \item Mô hình thử nghiệm
-      \item Các cải tiến dự kiến
+      \item Ý tưởng: Hệ thống hướng tới lần này là sự kết hợp của cách nối dây theo cấu trúc galois field, áp dụng cho dịch 4 thanh ghi 4 bit và sử dụng phép nhân trong galois field $GF(2^4)$ mà không cần sử dụng đến bảng cho trước.
         \end{itemize}
     \end{itemize}
     }
     
     \subsection{Các công việc dự kiến thực hiện trong thời gian tới:}
+    {\fontsize{12pt}{14pt}\selectfont
+    \begin{itemize}[
+      label=-,
+      leftmargin=0.5cm,
+      itemsep=0pt,        % no extra vertical space between items
+      parsep=0pt,         % no extra space between paragraphs inside items
+      topsep=0pt          % no extra space before/after the list
+    ]
+        \item Kiểm chứng trên về logic trên toolkit FPGA.
+        \item Kiểm chứng về thời gian thực hiện và độ chênh lệch về thời gian thực hiện giữa các hệ thống với nhau.
+    \end{itemize}
 \end{document}
