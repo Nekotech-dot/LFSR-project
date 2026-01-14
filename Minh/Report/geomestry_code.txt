@@ -12,78 +12,102 @@
 \begin{figure}[ht]
     \hspace*{1cm}
     \begin{tikzpicture}[>=latex,thick]
-    
- 
-    % Flip-flop 1
+
+    % Clock and tap
+    \node[left] at (-0.5,-0.8) {Clock};
+    \node[left] at (-0.5,3.5) {Tap bit};
+
+    % FF1
     \draw (0,0) rectangle (2,2);
     \node at (0.3,1.5) {D};
     \node at (1.7,1.5) {Q};
     \draw (0.5,0.5) -- (0,0.3) -- (0,0.7) -- cycle;
-    \node[left] at (-0.5,-0.8) {Clock};
-    \draw[->] (-0.5,1.5) -- (0,1.5); % Input D1
-    \draw[->] (2,1.5) -- (3,1.5); % Output Q1
-    
     \node at (1, -0.25) {$x^3$};
-    %\node[left] at (-1, 1.5) {\fontsize{13pt}{15pt}\selectfont{Seed}};
-    
-    % Flip-flop 2
-    \draw (3,0) rectangle (5,2);
-    \node at (3.3,1.5) {D};
-    \node at (4.7,1.5) {Q};
-    \draw (3.5,0.5) -- (3,0.3) -- (3,0.7) -- cycle;
-    \draw[->] (5,1.5) -- (6,1.5); % Output Q2
-    \node at (4, -0.25) {$x^2$};
-    
-    % Flip-flop 3
-    \draw (6,0) rectangle (8,2);
-    \node at (6.3,1.5) {D};
-    \node at (7.7,1.5) {Q};
-    \draw (6.5,0.5) -- (6,0.3) -- (6,0.7) -- cycle;
-    \draw[->] (8,1.5) -- (8.9,1.5); % Output Q3
-    \draw[->] (9.3,2.5) -- (9.3,1.9);
-    \node at (7, -0.25) {$x$};
-    
-    
-    
-    
-    % Flip-flop 4
-    \draw (10.5,0) rectangle (12.5,2);
-    \node at (10.8,1.5) {D};
-    \node at (12.2,1.5) {Q};
-    \draw (11,0.5) -- (10.5,0.3) -- (10.5,0.7) -- cycle;
-    \draw[-] (12.5,1.5) -- (13.5,1.5); % Output Q4
-    \draw[-] (13.5,1.5) -- (13.5,2.5);
-    \draw[-] (13.5, 2.5) -- (-0.5,2.5);
-   % \node at (12.6, 1.5) {Output};
-    \node at (11.5, -0.25) {$1$};
+    % Arrow from Clock to FF1 D
+    \draw[->] (-0.5,1.5) -- (0,1.5);
 
-    \draw[->](9.7,1.5) -- (10.5,1.5) ;
-    
-    % wiring by clk
-    \draw[-] (-0.5,-0.5) -- (10.285,-0.5);
-        
+    % XOR1 after FF1
+    \draw[->] (2,1.5) -- (2.8,1.5);
+    \draw (3.2,1.5) circle (0.4); 
+    \node at (3.2,1.5) {\fontsize{20pt}{10pt}\selectfont +};
+    \node at (3.2, 0.9) {\fontsize{10}{12pt}\selectfont{XOR}};
+
+    % Arrow from XOR1 output to D input FF2
+    \draw[->] (3.6,1.5) -- (4,1.5);
+
+    % FF2
+    \draw (4,0) rectangle (6,2);
+    \node at (4.3,1.5) {D};
+    \node at (5.7,1.5) {Q};
+    \draw (4.5,0.5) -- (4,0.3) -- (4,0.7) -- cycle;
+    \node at (5, -0.25) {$x^2$};
+
+    % XOR2 after FF2
+    \draw[->] (6,1.5) -- (6.8,1.5);
+    \draw (7.2,1.5) circle (0.4); 
+    \node at (7.2,1.5) {\fontsize{20pt}{10pt}\selectfont +};
+    \node at (7.2, 0.9) {\fontsize{10}{12pt}\selectfont{XOR}};
+
+    % Arrow from XOR2 output to D input FF3
+    \draw[->] (7.6,1.5) -- (8,1.5);
+
+    % FF3
+    \draw (8,0) rectangle (10,2);
+    \node at (8.3,1.5) {D};
+    \node at (9.7,1.5) {Q};
+    \draw (8.5,0.5) -- (8,0.3) -- (8,0.7) -- cycle;
+    \node at (9, -0.25) {$x$};
+
+    % XOR3 after FF3
+    \draw[->] (10,1.5) -- (10.8,1.5);
+    \draw (11.2,1.5) circle (0.4); 
+    \node at (11.2,1.5) {\fontsize{20pt}{10pt}\selectfont +};
+    \node at (11.2, 0.9) {\fontsize{10}{12pt}\selectfont{XOR}};
+
+    % Arrow from XOR3 output to D input FF4
+    \draw[->] (11.6,1.5) -- (12,1.5);
+
+    % FF4
+    \draw (12,0) rectangle (14,2);
+    \node at (12.3,1.5) {D};
+    \node at (13.7,1.5) {Q};
+    \draw (12.5,0.5) -- (12,0.3) -- (12,0.7) -- cycle;
+    \node at (13, -0.25) {$1$};
+
+    % XOR4 after FF4
+    \draw[-] (14,1.5) -- (14.5,1.5);
+
+    % Output bus
+    \draw[-] (14.5,1.5) -- (14.5,2.5);
+    \draw[-] (14.5,2.5) -- .5,2.5);
+
+    % Tap wire (if using one)
+    \draw[-] (-0.5, 2.5) -- (-0.5, 1.5);
+
+    % Wiring for clocks below
+    \draw[-] (-0.5,-0.5) -- (11.815,-0.5);
     \draw[-] (-0.215, 0.5) -- (0, 0.5);
     \draw[-] (-0.2,-0.5) -- (-0.2,0.5);
-        
-    \draw[-] (2.785, 0.5) -- (3, 0.5);
-    \draw[-] (2.8,-0.5) -- (2.8,0.5);
-        
-    \draw[-] (5.785, 0.5) -- (6, 0.5);
-    \draw[-] (5.8,-0.5) -- (5.8,0.5);
-        
-    \draw[-] (10.285, 0.5) -- (10.5, 0.5);
-    \draw[-] (10.285,-0.5) -- (10.285,0.5);
+    \draw[-] (3.815, 0.5) -- (4, 0.5);
+    \draw[-] (3.8,-0.5) -- (3.8,0.5);
+    \draw[-] (7.815, 0.5) -- (8, 0.5);
+    \draw[-] (7.8,-0.5) -- (7.8,0.5);
+    \draw[-] (11.815,-0.5) -- (11.815,0.5);
+    \draw[-] (11.815,0.5) -- (12,0.5);
+    % Tap bit p0
+    \node at (2,2.7) {p0};
+    \draw[->] (2,2.5) -- (2,2); % Tap bit wire down to Q
     
+    % AND gate after Q output (circle with X at e.g. (2,2.25))
+    \draw (2.3,2.25) circle (0.25);
+    \node at (2.3,2.25) {X};
     
-    %draw xor logic
-    \draw (9.3,1.5) circle (0.4); 
-    \node at (9.3,1.5) {\fontsize{20pt}{10pt}\selectfont +};
-    \node at (9.4, 0.9) {\fontsize{10}{12pt}\selectfont{XOR}};
+    % Draw Q output up to AND gate
+    \draw[->] (2,1.5) -- (2.3,2.25);
     
-    %connect to input
-    %\draw[-] (8.1, 2.5) -- (-0.5, 2.5);
-    \draw[-] (-0.5, 2.5) -- (-0.5, 1.5);
+    % Tap bit p0 line to AND gate
+    \draw[->] (2,2.7) -- (2.3,2.25);
     \end{tikzpicture}
-    \caption{ fibonacci}
-    \end{figure}
+    \caption{Transformed with XOR after each flip-flop}
+\end{figure}
 \end{document}
