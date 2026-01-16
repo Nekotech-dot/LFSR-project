@@ -521,16 +521,19 @@
     \draw [arrow] (proc3) -- (proc4);
     
     % loop control
+
+    \draw [arrow] (dec3) -- node[above]{True} (proc6);
+    \draw [arrow] (proc6) |- (dec1);
     \draw [arrow] (proc4) -- (dec3);
     \draw [arrow] (dec3.south) -- node[right]{False} (stop.north);
-    \draw [arrow] (dec3.west) -- ++(-3,0)|- node[pos=0.25,above, xshift=-0.5cm]{True} (dec1.west);
+    %\draw [arrow] (dec3.west) -- ++(-3,0)|- node[pos=0.25,above, xshift=-0.5cm]{True} (dec1.west);
     
 
 
      
 
     \end{tikzpicture}
-\caption{Phép nhân 4 bit với 4 bit trong $GF(2^4)$ với primitive polynomial $x^4 + x + 1$}
+\caption{Phép nhân của số 4bit a và số 4bit b trong $GF(2^4)$ với primitive polynomial $x^4 + x + 1$}
 \end{figure}
     \end{itemize}
 \end{itemize}
