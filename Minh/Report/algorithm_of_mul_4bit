@@ -14,63 +14,63 @@
 \begin{document}
 \begin{figure}[ht]
 \centering
-     \begin{tikzpicture}[node distance=2cm]
-     
-     
-     
-     %declaring 
-     \node (start) [startstop] {Start};
-     \node (in1) [io, below of=start] {\texttt{Input [3:0]a, [3:0]b, i = 0}};
-     \node (proc0) [process, below of=in1, align=left] {
-         \texttt{assign [3:0]temp\_a = a;}\\
-         \texttt{assign [3:0]temp\_b = b;}};
-    
-     \node (dec1) [decision, below of=proc0] {\texttt{temp\_b[0] ==1}};
-     \node (proc1) [process, below of=dec1] {\verb|res = res ^ temp_a;|};
-     \node (dec2) [decision, below of=proc1] {\verb|temp_a[3] == 1|};
-     \node (proc2) [process, right of=dec2, xshift = 4cm] {\verb|temp_a = temp_a << 1;|};
-     \node (proc3) [process, below of=dec2] {\verb|temp_a = (temp_a << 1) ^ 4'b0011;|};
-     \node (proc4) [process, below of=proc3] {\verb|temp_b >> 1;|};
-     \node (proc6) [process, below of=proc4, inner sep=2pt]
-{{\verb|i++|}};
-     \node (dec3)  [decision, below of=proc6] {\verb|i < 4|};
+\begin{tikzpicture}[node distance=2cm]
 
+% Nodes
+\node (start) [startstop] {Start};
+\node (in1) [io, below of=start]
+{\verb|Input [3:0] a, [3:0] b, i = 0|};
+\node (proc0) [process, below of=in1]
+{\texttt{result = 0;}};
 
+\node (proc1) [process, below of=proc0, align=left]
+{
+\texttt{mask = \{4\{b[0]\}\};} \\
+\verb|result = result ^ (a & mask);|
+};
 
-     \node (stop) [startstop, below of=dec3] {Stop};
+\node (dec1) [decision, below of=proc1]
+{\verb|a[3] == 1|};
 
-     %connecting together
-     \draw [arrow] (start) -- (in1);
-    \draw [arrow] (in1) -- (proc0);
-    \draw [arrow] (proc0) -- (dec1);
-    
-    % dec1 branches
-    \draw [arrow] (dec1.south) -- node[right]{True} (proc1.north);
-    
-    % after res update
-    \draw [arrow] (proc1) -- (dec2);
-    
-    % dec2 branches
-    \draw [arrow] (dec2.south) -- node[right]{True} (proc3.north);
-    \draw [arrow] (dec2.east) -- node[above]{False} (proc2.west);
-    
-    % merge paths
-    \draw [arrow] (proc2) |- (proc4);
-    \draw [arrow] (proc3) -- (proc4);
-    
-    % loop control
+\node (proc2) [process, right of=dec1, xshift=4cm]
+{\verb|a = a << 1;|};
 
-    \draw [arrow] (proc6) --  (dec3);
-    \draw [arrow] (proc4) -- (proc6);
-    %\draw [arrow] (proc4) -- (dec3);
-    \draw [arrow] (dec3.south) -- node[right]{False} (stop.north);
-    \draw [arrow] (dec3.west) -- ++(-3,0)|- node[pos=0.25,above, xshift=-0.5cm]{True} (dec1.west);
-    
+\node (proc3) [process, below of=dec1]
+{\verb|a = (a << 1) ^ 4'b0011;|};
 
+\node (proc4) [process, below of=proc3]
+{\verb|b = b >> 1;|};
 
-     
+\node (proc5) [process, below of=proc4]
+{\verb|i++;|};
 
-    \end{tikzpicture}
-\caption{Phép nhân của số 4bit a và số 4bit b trong $GF(2^4)$ với primitive polynomial $x^4 + x + 1$}
+\node (dec2) [decision, below of=proc5]
+{\verb|i < 4|};
+
+\node (stop) [startstop, below of=dec2] {Stop};
+
+% Arrows
+\draw [arrow] (start) -- (in1);
+\draw [arrow] (in1) -- (proc0);
+\draw [arrow] (proc0) -- (proc1);
+
+\draw [arrow] (proc1) -- (dec1);
+
+\draw [arrow] (dec1.south) -- node[right]{True} (proc3.north);
+\draw [arrow] (dec1.east) -- node[above]{False} (proc2.west);
+
+\draw [arrow] (proc2) |- (proc4);
+\draw [arrow] (proc3) -- (proc4);
+
+\draw [arrow] (proc4) -- (proc5);
+\draw [arrow] (proc5) -- (dec2);
+
+\draw [arrow] (dec2.south) -- node[right]{False} (stop.north);
+\draw [arrow] (dec2.west) -- ++(-3,0)|- node[pos=0.25,above, xshift=-0.5cm]{True} (proc1.west);
+
+\end{tikzpicture}
+\caption{Nhân hai số 4-bit trong $GF(2^4)$ sử dụng kỹ thuật masking (không rẽ nhánh theo $b[0]$)}
 \end{figure}
+
+
 \end{document}
