@@ -1,0 +1,66 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[vietnamese]{babel}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows}
+\tikzstyle{startstop} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm,text centered, draw=black, fill=red!30]
+\tikzstyle{io} = [trapezium, trapezium left angle=80, trapezium right angle=100, minimum width=0.5cm, minimum height=1cm,inner xsep=0.5pt, text centered, draw=black, fill=blue!30]
+\tikzstyle{process} = [rectangle, aspect=3, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=orange!30]
+\tikzstyle{decision} = [diamond, minimum width=4cm, aspect=3, minimum height=0.5cm, text centered, draw=black, fill=green!30]
+\tikzstyle{arrow} = [thick,->,>=stealth]
+
+\begin{document}
+\begin{figure}[ht]
+\centering
+     \begin{tikzpicture}[node distance=2cm]
+     
+     
+     
+     %declaring 
+     \node (start) [startstop] {Start};
+     \node (in1) [io, below of=start] {\texttt{Input [3:0]a, [3:0]b, i = 0}};
+     \node (proc0) [process, below of=in1, align=left] {
+         \texttt{assign [3:0]temp\_a = a;}\\
+         \texttt{assign [3:0]temp\_b = b;}};
+    
+     \node (dec1) [decision, below of=proc0] {\texttt{temp\_b[0] ==1}};
+     \node (proc1) [process, below of=dec1] {\verb|res = res ^ temp_a;|};
+     \node (dec2) [decision, below of=proc1] {\verb|temp_a[3] == 1|};
+     \node (proc2) [process, right of=dec2, xshift = 4cm] {\verb|temp_a = temp_a << 1;|};
+     \node (proc3) [process, below of=dec2] {\verb|temp_a = (temp_a << 1) ^ 4'b0011;|};
+     \node (proc4) [process, below of=proc3] {\verb|temp_b >> 1;|};
+     \node (dec3)  [decision, below of=proc4] {\verb|i < 4|};
+     \node (stop) [startstop, below of=dec3] {Stop};
+
+     %connecting together
+     \draw [arrow] (start) -- (in1);
+\draw [arrow] (in1) -- (proc0);
+\draw [arrow] (proc0) -- (dec1);
+
+% dec1 branches
+\draw [arrow] (dec1.south) -- node[right]{yes} (proc1.north);
+
+% after res update
+\draw [arrow] (proc1) -- (dec2);
+
+% dec2 branches
+\draw [arrow] (dec2.south) -- node[right]{yes} (proc3.north);
+\draw [arrow] (dec2.east) -- node[above]{no} (proc2.west);
+
+% merge paths
+\draw [arrow] (proc2) |- (proc4);
+\draw [arrow] (proc3) -- (proc4);
+
+% loop control
+\draw [arrow] (proc4) -- (dec3);
+\draw [arrow] (dec3.south) -- node[right]{no} (stop.north);
+\draw [arrow] (dec3.west) -- ++(-3,0)|- node[pos=0.25,above, xshift=-8pt]{yes} (dec1.west);
+
+
+
+     
+
+    \end{tikzpicture}
+\caption{Phép nhân 4 bit với 4 bit trong $GF(2^4)$ với primitive polynomial $x^4 + x + 1$}
+\end{figure}
+\end{document}
