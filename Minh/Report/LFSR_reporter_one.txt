@@ -5,11 +5,11 @@
 \usepackage[T5]{fontenc}
 \usepackage[vietnamese]{babel}
 \usepackage{tikz}
-\usetikzlibrary{shapes.geometric, arrows}
+\usetikzlibrary{shapes.geometric,  arrows.meta, positioning}
 \tikzstyle{startstop} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm,text centered, draw=black, fill=red!30]
 \tikzstyle{io} = [trapezium, trapezium left angle=80, trapezium right angle=100, minimum width=0.5cm, minimum height=1cm,inner xsep=0.5pt, text centered, draw=black, fill=blue!30]
 \tikzstyle{process} = [rectangle, aspect=3, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=orange!30]
-\tikzstyle{decision} = [diamond, minimum width=4cm, aspect=3, minimum height=0.5cm, text centered, draw=black, fill=green!30]
+\tikzstyle{decision} = [diamond, minimum width=4cm, aspect=3, minimum height=1.5cm, text centered, draw=black, fill=green!30]
 \tikzstyle{arrow} = [thick,->,>=stealth]
 
 
@@ -495,6 +495,10 @@
      \node (proc3) [process, below of=dec2] {\verb|temp_a = (temp_a << 1) ^ 4'b0011;|};
      \node (proc4) [process, below of=proc3] {\verb|temp_b >> 1;|};
      \node (dec3)  [decision, below of=proc4] {\verb|i < 4|};
+     \node (proc6) [process, left=1.5cm of dec3, inner sep=2pt]
+{{\verb|i++|}};
+
+
      \node (stop) [startstop, below of=dec3] {Stop};
 
      %connecting together
@@ -509,7 +513,7 @@
     \draw [arrow] (proc1) -- (dec2);
     
     % dec2 branches
-    \draw [arrow] (dec2.south) -- node[right]{False} (proc3.north);
+    \draw [arrow] (dec2.south) -- node[right]{True} (proc3.north);
     \draw [arrow] (dec2.east) -- node[above]{False} (proc2.west);
     
     % merge paths
