@@ -1,0 +1,50 @@
+def lfsr_8bit(seed, steps):
+    state = seed & 0b11111111
+    if state == 0:
+        raise ValueError("Seed không được bằng 0")
+    
+    results = []
+
+    for i in range(steps):
+        # 1. Tính bit hồi tiếp (Feedback)
+        # Đa thức phản chiếu: x^8 + x^4 + x^3 + x^2 + 1
+        # Các bit cần lấy: 0, 2, 3, 4
+        
+        bit_0 = state & 1          # Bit tại vị trí 1 (LSB)
+        bit_2 = (state >> 2) & 1   # Bit tại vị trí 3
+        bit_3 = (state >> 3) & 1   # Bit tại vị trí 4
+        bit_4 = (state >> 4) & 1   # Bit tại vị trí 5
+        
+        feedback = bit_0 ^ bit_2 ^ bit_3 ^ bit_4
+        
+        # 2. Dịch phải (Shift Right) 
+        # Bit LSB (bit 0) cũ sẽ là đầu ra
+        output_bit = state & 1
+        state = state >> 1
+        
+        if feedback:
+            state |= 0b10000000  # Đặt bit 7 thành 1
+            
+        results.append(state)
+        
+        # In kết quả minh họa (chỉ in 10 bước đầu)
+        if i < 10:
+            print(f"Bước {i+1:02}: {state:08b} | Hex: {state:02X} | Dec: {state}")
+
+    return results
+
+# --- CHẠY THỬ NGHIỆM ---
+seed_val = 0xACE1 # Một giá trị hex bất kỳ (ví dụ)
+# Mask lại thành 8 bit (0xE1 = 225)
+seed_8bit = seed_val & 0xFF 
+
+print(f"--- CHẠY LFSR 8-BIT (Seed: {seed_8bit}) ---")
+sequence = lfsr_8bit(seed_8bit, steps=255)
+
+# KIỂM TRA CHU KỲ
+# Nếu đúng đa thức tối đại, sau 255 bước, trạng thái phải quay về seed ban đầu
+print("-" * 30)
+if sequence[-1] == seed_8bit: #-1: đếm ngược từ cuối
+    print("✅ THÀNH CÔNG: Chu kỳ đã lặp lại chính xác sau 255 bước.")
+else:
+    print(f"⚠️ CẢNH BÁO: Trạng thái bước 255 là {sequence[-1]} (Khác seed ban đầu).")
