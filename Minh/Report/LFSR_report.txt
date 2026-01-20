@@ -16,6 +16,7 @@
 \usepackage{placeins}
 
 \usepackage{titlesec}
+\usepackage{hyperref}
 
 % Roman section numbering: I, II, III...
 \renewcommand{\thesection}{\Roman{section}}
@@ -35,6 +36,8 @@
   {\thesubsection.}
   {0.5em}
   {}
+\renewcommand{\refname}{References}
+
 
 \titlespacing{\subsection}{0pt}{0.2cm}{0.1cm}
 \usepackage{enumitem}
@@ -90,7 +93,7 @@
         
         \hspace{0.01em} - Chủ nhiệm đề tài: Trương Hải Minh\>
         \hspace{6.5cm}Lớp: EEE4.24106.1 \> \hspace{4.8cm} Khoa: Điện--Điện tử\\
-        \hspace{0.01em} - Cán bộ hướng dẫn: ThS.~Đinh Văn Nam\> 
+        \hspace{0.01em} - Cán bộ hướng dẫn: ThS.~Đinh Văn Nam, TS.~Lê Văn Thuận.\> 
     \end{tabbing}}
 \section{TIẾN ĐỘ THỰC HIỆN ĐỀ TÀI}
     
@@ -264,7 +267,7 @@
       parsep=0pt,
       topsep=0pt
     ]
-      \item Cấu trúc Galois Field: Đây là một cách nối dây khác và tối ưu hơn so với hệ thống fibonacci.
+      \item Cấu trúc Galois Field: Đây là một cách nối dây khác và tối ưu hơn so với hệ thống fibonacci.[1]
       \begin{figure}[ht]
     \hspace*{1cm}
     \begin{tikzpicture}[>=latex,thick]
@@ -343,7 +346,7 @@
     \caption{ Hệ thống galois field}
     \end{figure}
     \item Giải thích điểm phát triển so với hệ thống trước đó: Hệ thống galois field thể hiện internal xor thay vì external xor như hệ thống fibonacci. Điều này khiến cho bit sau khi xor sẽ cập nhật nhanh hơn (Sự nhanh hơn của hệ thống galois field thể hiện rõ ràng hơn ở hệ thống có nhiều phép xor).
-    \item Phân tích hệ thống \(m\) thanh ghi \(n\) bit: Ý tưởng chính của hệ thống là tạo ra m thanh ghi và mỗi thanh ghi sẽ có n bit. Như vậy, hệ thống sẽ có độ phức tạp cao hơn, tạo ra chuỗi kết quả dài hơn với $(2^n -1)^m$ sequences (Do hoạt động trên của hệ thống dựa trên m thanh register $GF(2^n)$ và phải trừ trường hợp tất cả các vị trí có giá trị là 0). Tuy nhiên, có hai điểm còn hạn chế trong tài liệu tham khảo này. Thứ nhất là về phép nhân giữa 2 số 4 bit chưa được tối ưu (còn phải phụ thuộc vào bảng cho trước trong $GF(2^4)$). Với bảng cho trước như vậy, hệ thống sẽ tốn một khoảng thời gian để tìm kiếm LUT (Look up table), dung lượng thanh ghi để lưu trữ bảng đó. Tiếp theo, hệ thống trong đề xuất vẫn còn sử dụng cách nối dây theo cấu trúc fibonacci.
+    \item Phân tích hệ thống \(m\) thanh ghi \(n\) bit: Ý tưởng chính của hệ thống là tạo ra m thanh ghi và mỗi thanh ghi sẽ có n bit. Như vậy, hệ thống sẽ có độ phức tạp cao hơn, tạo ra chuỗi kết quả dài hơn với $(2^n -1)^m$ sequences (Do hoạt động trên của hệ thống dựa trên m thanh register $GF(2^n)$ và phải trừ trường hợp tất cả các vị trí có giá trị là 0). Tuy nhiên, có hai điểm còn hạn chế trong tài liệu tham khảo này. Thứ nhất là về phép nhân giữa 2 số 4 bit chưa được tối ưu (còn phải phụ thuộc vào bảng cho trước trong $GF(2^4)$). Với bảng cho trước như vậy, hệ thống sẽ tốn một khoảng thời gian để tìm kiếm LUT (Look up table), dung lượng thanh ghi để lưu trữ bảng đó. Tiếp theo, hệ thống trong đề xuất vẫn còn sử dụng cách nối dây theo cấu trúc fibonacci.[2]
     \end{itemize}
 
   \item Hướng tự phát triển và mô hình hệ thống hiện tại
@@ -550,4 +553,25 @@
         \item Phát triển thêm cho hệ thống 8bit và 16bit.
         \item Ứng dụng vào mã hóa dòng stream line.
     \end{itemize}
+
+
+ 
+
+    \begin{thebibliography}{2}
+
+    \bibitem{lfsr_wiki}
+    ``Linear-feedback shift register,''
+    \textit{Wikipedia, The Free Encyclopedia}.
+    [Online]. Available:
+    \url{https://en.wikipedia.org/wiki/Linear-feedback_shift_register}.
+    [Accessed: Jan. 19, 2026].
+    
+    \bibitem{lfsr_gaussian}
+    ``Gaussian pseudorandom number generator using linear-feedback shift registers in extended fields,''
+    \textit{Mathematics}, Article.
+    
+    \end{thebibliography}
+
+
+
 \end{document}
