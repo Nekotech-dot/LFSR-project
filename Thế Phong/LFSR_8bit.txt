@@ -1,0 +1,24 @@
+module galois_lfsr_left (
+    input wire clk,
+    input wire rst_n,
+    input wire en,   
+    output reg [7:0] state 
+);
+//cấu hình
+    parameter SEED = 8'b10100011; 
+    parameter TAPS = 8'b00011101; 
+
+    always @(posedge clk or negedge rst_n) begin
+        if (!rst_n) begin
+            state <= SEED;
+        end 
+        else if (en) begin
+            if (state[7] == 1'b1) begin
+                state <= (state << 1) ^ TAPS;
+            end else begin
+                state <= (state << 1);
+            end
+        end
+    end
+
+endmodule
