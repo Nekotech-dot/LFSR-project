@@ -79,8 +79,8 @@
     \begin{tabbing}
         \hspace{1cm}\= \hspace{2.5cm}\= \kill
         \> \textbf{Kính gửi:} \> \textbf{-- Lãnh đạo Đại học Phenikaa}\\
-        \>\> \textbf{-- Ban Khoa học Công nghệ}\\
-        \>\>\textbf{-- \ldots}
+        \>\> \textbf{-- Ban Khoa học Công nghệ}
+        
     \end{tabbing}}
     
 % ===== SECTION I =====
@@ -473,7 +473,7 @@
     \caption{Sơ đồ cấu trúc galois field với 4 thanh ghi 4 bit và 4bit coefficient  }
 \end{figure}
 
-    \item Giải thích: Tương tự với hệ thống galois field đã được đề cập ở trước đó, hệ thống thay vì thể hiện các trạng thái 0 và 1 của $q_3, q_2, q_1, q_0$ lần lượt là các trạng thái không có dây hay có dây. Hệ thống này sử dụng 4bit cho $q_3, q_2, q_1, q_0$ để tạo ra chuỗi sequence dài nhất có thể cho mỗi thanh register $2^4-1$. Kết hợp với hệ thống  dịch bit tuyến tính theo cấu trúc galois field. Hệ thống sẽ đạt được sequence dài nhất $(2^4-1)^4$ với thời gian rất nhanh.
+    \item Giải thích: Tương tự với hệ thống galois field đã được đề cập ở trước đó, hệ thống thay vì thể hiện các trạng thái 0 và 1 của $q_3, q_2, q_1, q_0$ lần lượt là các trạng thái không có dây hay có dây. Hệ thống này sử dụng 4bit cho $q_3, q_2, q_1, q_0$ để tạo ra chuỗi sequence dài nhất có thể cho mỗi thanh register $2^4$. Kết hợp với hệ thống  dịch bit tuyến tính theo cấu trúc galois field. Hệ thống sẽ đạt được sequence dài nhất $(2^4)^4-1$ với thời gian rất nhanh.
     \item Phép nhân 4bit: Đây là phép nhân 4bit này được thực hiện trong $GF(2^4)$ giữa hệ số và các chuỗi số 4bit trong từng thanh register. Ý tưởng là thể hiện các số 4bit dưới dạng (a, b, c, d) tương ứng với polynomial: $x^4 + a.x^3 + b.x^2 + c.x +d$. Như vậy, hệ thống sẽ thể hiện phép nhân giữa 2 polynomial 4bit lại với nhau và khi một phép nhân đạt đến $x^4$ thì sẽ phải xor với primitive polynomial of $GF(2^4) = x^4 + x +1$ để ra được một biểu thức cũng thuộc trong $GF(2^4)$. Convert polynomial to 4bit binary numbers, hệ thống sẽ đạt được 4bit scalar vector từ phép nhân 2 số 4bit. Thuật toán của phép nhân được thể hiện ở hình 5.
     
 
