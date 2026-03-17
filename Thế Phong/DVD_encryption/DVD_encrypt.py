@@ -1,7 +1,4 @@
 def gf_mul(a, b, n, red):
-    """
-    Multiply in GF(2^n) with reduction polynomial (without x^n term)
-    """
     res = 0
     mask = (1 << n) - 1
 
