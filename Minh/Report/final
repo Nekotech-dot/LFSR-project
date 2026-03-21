@@ -1,0 +1,110 @@
+\documentclass[13pt]{article}
+\usepackage[a4paper,top=2.0cm,bottom=2.0cm,left=2.0cm,right=2.0cm]{geometry}
+\usepackage{comment}
+\usepackage[utf8]{inputenc}
+\usepackage[T5]{fontenc}
+\usepackage[vietnamese]{babel}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric,  arrows.meta, positioning}
+\tikzstyle{startstop} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm,text centered, draw=black, fill=red!30]
+\tikzstyle{io} = [trapezium, trapezium left angle=80, trapezium right angle=100, minimum width=0.5cm, minimum height=1cm,inner xsep=0.5pt, text centered, draw=black, fill=blue!30]
+\tikzstyle{process} = [rectangle, aspect=3, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=orange!30]
+\tikzstyle{decision} = [diamond, minimum width=4cm, aspect=3, minimum height=1.5cm, text centered, draw=black, fill=green!30]
+\tikzstyle{arrow} = [thick,->,>=stealth]
+
+
+\usepackage{placeins}
+
+\usepackage{titlesec}
+\usepackage{hyperref}
+
+% Roman section numbering: I, II, III...
+\renewcommand{\thesection}{\Roman{section}}
+
+% Section style (same size as body text)
+\titleformat{\section}
+  {\bfseries\fontsize{13pt}{15pt}\selectfont}
+  {\thesection.}
+  {0.5em}
+  {}
+
+\titlespacing{\section}{0pt}{0.4cm}{0.2cm}
+\renewcommand{\thesubsection}{\arabic{subsection}}
+
+\titleformat{\subsection}
+  {\normalfont\fontsize{13pt}{15pt}\selectfont}
+  {\thesubsection.}
+  {0.5em}
+  {}
+\renewcommand{\refname}{References}
+
+
+\titlespacing{\subsection}{0pt}{0.2cm}{0.1cm}
+\usepackage{enumitem}
+
+\begin{document}
+
+% ===== HEADER =====
+    \begin{minipage}[t]{0.3\textwidth}
+        \raggedright
+        \begin{center}
+            BỘ GIÁO DỤC VÀ ĐÀO TẠO\\
+            \textbf{ĐẠI HỌC PHENIKAA }\\
+            \vspace{-0.8em}
+            \rule{2cm}{0.4pt}
+        \end{center}
+    \end{minipage}
+        \hfill
+    \begin{minipage}[t]{0.6\textwidth}
+        \begin{center}
+            \textbf{CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM}\\
+            \textbf{Độc lập -- Tự do -- Hạnh phúc}\\
+            \vspace{-0.8em}
+            \rule{5.5cm}{0.4pt}
+        \end{center}
+    \end{minipage}
+
+\vspace{0.3cm}
+\hfill \textit{Hà Nội, ngày \ldots\ tháng \ldots\ năm \ldots}
+
+\vspace{0.1cm}
+\begin{center}
+    {\fontsize{13pt}{15pt}\selectfont\textbf{BÁO CÁO TÓM TẮT ĐỀ TÀI SINH VIÊN NGHIÊN CỨU KHOA HỌC }}\\
+   % {\fontsize{13pt}{15pt}\selectfont\textbf{NGHIÊN CỨU KHOA HỌC NĂM HỌC 20\ldots--20\ldots}}
+\end{center}
+\begin{comment}
+% ===== KÍNH GỬI =====
+{\fontsize{13pt}{13pt}\selectfont
+\vspace{0.2cm}
+    \begin{tabbing}
+        \hspace{1cm}\= \hspace{2.5cm}\= \kill
+        \> \textbf{Kính gửi:} \> \textbf{-- Lãnh đạo Đại học Phenikaa}\\
+        \>\> \textbf{-- Ban Khoa học Công nghệ}
+        
+    \end{tabbing}}
+\end{comment}   
+% ===== SECTION I =====
+\section{THÔNG TIN CHUNG}
+{\fontsize{12pt}{14pt}\selectfont
+
+    \begin{tabbing}
+        \hspace{1.5cm}\= \hspace{6cm}\= \kill
+       \hspace{0.01em} - Tên đề tài: Thiết kế và mô phỏng bộ sinh số giả ngẫu nhiên (LFSR-based PRNG) \\[-0.15em] \hspace{0.3em} và ứng dụng trong mã hóa đơn giản.\\
+        
+        \hspace{0.01em} - Chủ nhiệm đề tài: Trương Hải Minh\\
+        \hspace{0.01em} - Lớp: EEE4.24106.1 \> \hspace{4.8cm} Khoa: Điện--Điện tử\> \hspace{5cm} Khóa: K18\\
+        \hspace{0.01em} - Cán bộ hướng dẫn: ThS.~Đinh Văn Nam, TS.~Lê Văn Thuận.\> 
+    \end{tabbing}}
+\section{MỤC TIÊU ĐỀ TÀI}
+{
+\subsection{Understanding the Principle of Linear Feedback Shift Register (LFSR).}
+\subsection{Design of a Pseudo-Random Number Generator (PRNG) Using Verilog HDL.}
+\subsection{Simulation of the Generated Random Sequence, Analysis of Period and Properties.}
+\subsection{Application of PRNG (Pseudo-Random Number Generator) in a Simple Encryption Scheme.}
+}
+\section{TÍNH MỚI VÀ SÁNG TẠO}
+\section{NỘI DUNG NGHIÊN CỨU}
+\section{KẾT QUẢ NGHIÊN CỨU}
+\section{KHẢ NĂNG ỨNG DỤNG}
+\section{NHẬN XÉT CỦA GIÁO VIÊN HƯỚNG DẪN}
+\end{document}
